@@ -4,6 +4,8 @@ specifiers:
   '@commitlint/cli': ^17.6.5
   '@commitlint/config-conventional': ^17.6.5
   '@intlify/unplugin-vue-i18n': ^0.11.0
+  '@types/lodash-es': ^4.17.7
+  '@types/qs': ^6.9.7
   '@typescript-eslint/eslint-plugin': ^5.59.11
   '@typescript-eslint/parser': ^5.59.11
   '@unocss/transformer-directives': ^0.53.4
@@ -11,6 +13,7 @@ specifiers:
   '@vueuse/core': ^10.2.0
   '@vueuse/head': ^1.1.26
   axios: ^1.4.0
+  axios-retry: ^3.5.1
   cz-git: ^1.6.1
   echarts: ^5.4.2
   eslint: ^8.43.0
@@ -23,6 +26,7 @@ specifiers:
   naive-ui: ^2.34.4
   pinia: ^2.1.4
   prettier: ^2.8.8
+  qs: ^6.11.2
   sass: ^1.63.6
   typescript: 5.0.3
   unocss: ^0.53.4
@@ -43,10 +47,12 @@ dependencies:
   '@vueuse/core': 10.2.0_vue@3.3.4
   '@vueuse/head': 1.1.26_vue@3.3.4
   axios: 1.4.0
+  axios-retry: 3.5.1
   echarts: 5.4.2
   lodash-es: 4.17.21
   naive-ui: 2.34.4_vue@3.3.4
   pinia: 2.1.4_typescript@5.0.3+vue@3.3.4
+  qs: 6.11.2
   vite-plugin-pages: 0.31.0_vite@4.3.9
   vite-plugin-vue-layouts: 0.8.0_g7fj2hl5vhyulcy5trrnj6bjj4
   vue: 3.3.4
@@ -57,6 +63,8 @@ devDependencies:
   '@commitlint/cli': 17.6.5
   '@commitlint/config-conventional': 17.6.5
   '@intlify/unplugin-vue-i18n': 0.11.0_vue-i18n@9.2.2
+  '@types/lodash-es': 4.17.7
+  '@types/qs': 6.9.7
   '@typescript-eslint/eslint-plugin': 5.59.11_s4ftn7lht324llamkpcfsldho4
   '@typescript-eslint/parser': 5.59.11_crlwzwojs4eka6k5clgw6uybaq
   '@unocss/transformer-directives': 0.53.4
@@ -962,11 +970,9 @@ packages:
     resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
     dependencies:
       '@types/lodash': 4.14.195
-    dev: false
 
   /@types/lodash/4.14.195:
     resolution: {integrity: sha512-Hwx9EUgdwf2GLarOjQp5ZH8ZmblzcbTBC2wtQWNKARBSxM9ezRIAUpeDTgoQRAFB0+8CNWXVA9+MaSOzOF3nPg==}
-    dev: false
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
@@ -981,6 +987,10 @@ packages:
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
+    dev: true
+
+  /@types/qs/6.9.7:
+    resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: true
 
   /@types/semver/7.5.0:
@@ -1684,6 +1694,13 @@ packages:
   /available-typed-arrays/1.0.5:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
+
+  /axios-retry/3.5.1:
+    resolution: {integrity: sha512-mQRJ4IyAUnYig14BQ4MnnNHHuH1cNH7NW4JxEUD6mNJwK6pwOY66wKLCwZ6Y0o3POpfStalqRC+J4+Hnn6Om7w==}
+    dependencies:
+      '@babel/runtime': 7.22.5
+      is-retry-allowed: 2.2.0
+    dev: false
 
   /axios/1.4.0:
     resolution: {integrity: sha512-S4XCWMEmzvo64T9GfvQDOXgYRDJ/wsSZc7Jvdgx5u1sd0JwsuPLqb3SYmusag+edF6ziyMensPVqLTSc1PiSEA==}
@@ -3075,6 +3092,11 @@ packages:
       has-tostringtag: 1.0.0
     dev: false
 
+  /is-retry-allowed/2.2.0:
+    resolution: {integrity: sha512-XVm7LOeLpTW4jV19QSH38vkswxoLud8sQ57YwJVTPWdiaI9I8keEhGFpBlslyVsgdQy4Opg8QOLb8YRgsyZiQg==}
+    engines: {node: '>=10'}
+    dev: false
+
   /is-set/2.0.2:
     resolution: {integrity: sha512-+2cnTEZeY5z/iXGbLhPrOAaK/Mau5k5eXq9j14CpRTftq0pAJu2MwVRSZhyZWBzx3o6X795Lz6Bpb6R0GKf37g==}
     dev: false
@@ -3947,6 +3969,13 @@ packages:
     resolution: {integrity: sha512-kV/CThkXo6xyFEZUugw/+pIOywXcDbFYgSct5cT3gqlbkBE1SJdwy6UQoZvodiWF/ckQLZyDE/Bu1M6gVu5lVw==}
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: true
+
+  /qs/6.11.2:
+    resolution: {integrity: sha512-tDNIz22aBzCDxLtVH++VnTfzxlfeK5CbqohpSqpJgj1Wg/cQbStNAz3NuqCs5vV+pjBsK4x4pN9HlVh7rcYRiA==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
+    dev: false
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}

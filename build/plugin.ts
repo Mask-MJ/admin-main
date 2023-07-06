@@ -26,7 +26,7 @@ export const createVitePlugins = () => {
     }),
     Layouts(),
     AutoImport({
-      // 自动导入 vue vue-router @vueuse/head @vueuse/core
+      // 自动导入 vue vue-router vue-i18n @vueuse/head @vueuse/core naive-ui
       imports: [
         'vue',
         'vue-router',
