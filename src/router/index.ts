@@ -7,7 +7,7 @@ export const router = createRouter({
   // 路由配置
   routes: [
     {
-      path: '/',
+      path: '/home',
       name: 'home',
       component: () => import('../views/dashboard/home.vue'),
     },

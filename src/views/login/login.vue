@@ -1,11 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { router } from '../../router';
+
+  const themeStore = useThemeStore();
+  // console.log(themeStore.getPrimaryColor);
+
+  const handleClick = () => {
+    // console.log('click');
+    router.push('/home');
+  };
+</script>
 
 <template>
   <div class="bg-gray w-screen h-screen flex flex-items-center justify-center">
     <div class="w-300px bg-white rounded-5 px-32px py-24px">
       <div class="flex flex-items-center justify-between">
         <img class="w-48px h-48px" src="../../assets/vue.svg" alt="" />
-        <span class="text-24px text-gray font-700">Meijun</span>
+        <span class="text-24px font-700" :style="{ color: themeStore.getPrimaryColor }">
+          Meijun
+        </span>
       </div>
       <div>
         <p class="text-18px mb-14px">账密登陆</p>
@@ -26,7 +38,17 @@
           <n-checkbox> 记住我 </n-checkbox>
           <n-button text>忘记密码?</n-button>
         </div>
-        <n-button size="large" strong block type="primary" round class="mb-16px"> 登陆</n-button>
+        <n-button
+          size="large"
+          strong
+          block
+          type="primary"
+          round
+          class="mb-16px"
+          @click="handleClick"
+        >
+          登陆
+        </n-button>
         <div class="flex justify-between h-38px">
           <n-button size="large" class="h-30px w-140px"> 手机验证码登陆</n-button>
           <n-button size="large" class="h-30px w-140px"> 注册</n-button>
