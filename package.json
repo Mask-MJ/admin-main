@@ -16,6 +16,7 @@
     "@vueuse/head": "^1.1.26",
     "axios": "^1.4.0",
     "axios-retry": "^3.5.1",
+    "colord": "^2.9.3",
     "echarts": "^5.4.2",
     "lodash-es": "^4.17.21",
     "naive-ui": "^2.34.4",
