@@ -31,7 +31,9 @@ export const createVitePlugins = () => {
         'vue',
         'vue-router',
         'vue-i18n',
+        // 改变页面title
         '@vueuse/head',
+        // vue的hooks工具库
         '@vueuse/core',
         {
           'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
