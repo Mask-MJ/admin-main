@@ -1,5 +1,7 @@
 <script setup lang="ts">
   // import { router } from '../../router';
+  // import { defHttp } from '@/api';
+  import { getCode } from '@/api/modules/login';
 
   const themeStore = useThemeStore();
   // console.log(themeStore.getPrimaryColor);
@@ -13,14 +15,36 @@
   // formRef 用于获取<n-form>组件实例, 调用实例方法
   const formRef = ref();
 
+  // codeData 用于存储验证码的数据
+  const codeData = ref({
+    img: '',
+    uuid: '',
+  });
+
+  // 将getCode方法封装到api文件中, 通过import导入, 在onMounted中调用
+  // defHttp 是封装的axios请求方法, 通过get方法获取验证码
+  // function getCode() {
+  //   return defHttp.get({ url: 'code' });
+  // }
+
   const handleClick = () => {
     // 获取<n-form>组件实例中的validate方法, 根据使用的表单和输入框的规则来验证表单是否通过
     // formRef.value中包含了组件实例中的所有方法
     formRef.value.validate();
-    // console.log(formRef.value);
-    // console.log('click');
+    // console.log(formRef.value); //组件实例中的所有方法
     // router.push('/home');
   };
+
+  // onMounted 用于发送请求获取数据
+  onMounted(async () => {
+    // 通过res接收请求返回的数据, 再从返回的数据中获取验证码
+    const res = await getCode();
+    // console.log(res);
+    // 将codeData数据中的img赋值 , 把获取到的验证码图片赋值给img, 通过base64格式显示图片
+    codeData.value.img = 'data:image/png;base64,' + res.img;
+    // 将codeData数据中的uuid赋值 ,把获取到的uuid赋值给uuid
+    codeData.value.uuid = res.uuid;
+  });
 </script>
 
 <template>
@@ -76,9 +100,10 @@
               size="large"
               type="text"
               placeholder="请输入验证码"
+              class="code"
             >
               <template #suffix>
-                <img src="../../assets/vue.svg" alt="" />
+                <img class="h-38px" :src="codeData.img" alt="" />
               </template>
             </n-input>
           </n-form-item>
@@ -113,4 +138,11 @@
   </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+  .code {
+    :deep(.n-input-wrapper) {
+      padding-right: 1px;
+      border-radius: 3px;
+    }
+  }
+</style>
