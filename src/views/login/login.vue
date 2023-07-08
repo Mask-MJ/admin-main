@@ -1,7 +1,7 @@
 <script setup lang="ts">
   // import { router } from '../../router';
   // import { defHttp } from '@/api';
-  import { getCode } from '@/api/modules/login';
+  import { getCode, login } from '@/api/modules/login';
 
   const themeStore = useThemeStore();
   // console.log(themeStore.getPrimaryColor);
@@ -22,16 +22,41 @@
   });
 
   // 将getCode方法封装到api文件中, 通过import导入, 在onMounted中调用
-  // defHttp 是封装的axios请求方法, 通过get方法获取验证码
+  // defHttp 是封装的axios请求方法, 通过get方法获取验证码(根据什么请求是看后端的接口文档)
   // function getCode() {
   //   return defHttp.get({ url: 'code' });
+  // }
+
+  // 将login方法封装到api文件中, 通过import导入, 在onMounted中调用
+  // function login(data: any) {
+  //   return defHttp.post({ url: 'system/token/login', data });
   // }
 
   const handleClick = () => {
     // 获取<n-form>组件实例中的validate方法, 根据使用的表单和输入框的规则来验证表单是否通过
     // formRef.value中包含了组件实例中的所有方法
-    formRef.value.validate();
+    // formRef.value.validate();
     // console.log(formRef.value); //组件实例中的所有方法
+
+    // 调用validate方法, 验证表单是否通过
+    formRef.value
+      .validate()
+      .then(() => {
+        // 验证表单通过后, 执行的操作
+        // 定义一个prams对象
+        const prams = {
+          // 将formValue中的数据(username password code)和codeData中的uuid数据合并到一起
+          uuid: codeData.value.uuid,
+          ...formValue.value,
+        };
+        // console.log('验证通过', prams);
+        login(prams);
+      })
+      .catch(() => {
+        // 验证表单不通过后, 执行的操作
+        // console.log('验证不通过');
+      });
+
     // router.push('/home');
   };
 
