@@ -1,12 +1,25 @@
 <script setup lang="ts">
-  import { router } from '../../router';
+  // import { router } from '../../router';
 
   const themeStore = useThemeStore();
   // console.log(themeStore.getPrimaryColor);
 
+  // formValue 用于<n-form>双向绑定表单数据, 绑定对应的表单项,验证表单是否通过
+  const formValue = ref({
+    username: '',
+    password: '',
+    code: '',
+  });
+  // formRef 用于获取<n-form>组件实例, 调用实例方法
+  const formRef = ref();
+
   const handleClick = () => {
+    // 获取<n-form>组件实例中的validate方法, 根据使用的表单和输入框的规则来验证表单是否通过
+    // formRef.value中包含了组件实例中的所有方法
+    formRef.value.validate();
+    // console.log(formRef.value);
     // console.log('click');
-    router.push('/home');
+    // router.push('/home');
   };
 </script>
 
@@ -21,19 +34,55 @@
       </div>
       <div>
         <p class="text-18px mb-14px">账密登陆</p>
-        <n-input type="text" size="large" placeholder="请输入账号" class="mb-16px h-38px" />
-        <n-input
-          type="password"
-          size="large"
-          show-password-on="mousedown"
-          placeholder="密码"
-          class="mb-16px h-38px"
-        />
-        <n-input type="text" placeholder="请输入验证码" class="mb-16px h-38px">
-          <template #suffix>
-            <img src="../../assets/vue.svg" alt="" />
-          </template>
-        </n-input>
+        <n-form ref="formRef" :model="formValue" label-placement="left">
+          <n-form-item
+            path="username"
+            :rule="{
+              required: true,
+              message: '请输入账号',
+            }"
+          >
+            <n-input
+              v-model:value="formValue.username"
+              size="large"
+              type="text"
+              placeholder="请输入账号"
+            />
+          </n-form-item>
+          <n-form-item
+            path="password"
+            :rule="{
+              required: true,
+              message: '请输入密码',
+            }"
+          >
+            <n-input
+              v-model:value="formValue.password"
+              type="password"
+              size="large"
+              show-password-on="mousedown"
+              placeholder="密码"
+            />
+          </n-form-item>
+          <n-form-item
+            path="code"
+            :rule="{
+              required: true,
+              message: '请输入验证码',
+            }"
+          >
+            <n-input
+              v-model:value="formValue.code"
+              size="large"
+              type="text"
+              placeholder="请输入验证码"
+            >
+              <template #suffix>
+                <img src="../../assets/vue.svg" alt="" />
+              </template>
+            </n-input>
+          </n-form-item>
+        </n-form>
         <div class="flex justify-between mb-16px">
           <n-checkbox> 记住我 </n-checkbox>
           <n-button text>忘记密码?</n-button>
