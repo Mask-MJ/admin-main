@@ -23,7 +23,18 @@ export default defineConfig({
     // 端口号修改
     port: 3100,
     // 代理
-    // proxy: {},
+    proxy: {
+      // proxy 选项:
+      // 匹配https://localhost:3100/basic-api开头的请求时,将其代理到http://10.2.0.221:8080/basic-api
+      '/basic-api': {
+        target: 'http://10.2.0.221:8080/', // 后端服务实际地址
+        ws: true, // 是否启用websockets
+        changeOrigin: true, // 是否跨域
+        // 重写api-->去掉basic-api 例如:https://localhost:3100/basic-api/code --> http://10.2.0.221:8080/code
+        rewrite: (path) => path.replace(/^\/basic-api/, ''),
+        secure: false, // 如果是https接口，需要配置这个参数
+      },
+    },
   },
   // plugins 为 vite 插件
   plugins: createVitePlugins(),
