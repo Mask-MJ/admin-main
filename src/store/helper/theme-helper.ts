@@ -1,5 +1,5 @@
 import type { GlobalThemeOverrides } from 'naive-ui';
-import { addColorAlpha, getColorPalette } from '../../utils/color';
+import { addColorAlpha, getColorPalette } from '@/utils/color';
 
 type ColorScene = '' | 'Suppl' | 'Hover' | 'Pressed' | 'Active';
 type ColorType = 'primary' | 'info' | 'success' | 'warning' | 'error';
