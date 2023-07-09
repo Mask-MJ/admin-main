@@ -25,6 +25,8 @@
 
 <template>
   <n-config-provider :theme-overrides="themeStore.getThemeColor">
-    <RouterView />
+    <NaiveProvider>
+      <RouterView />
+    </NaiveProvider>
   </n-config-provider>
 </template>
