@@ -2,7 +2,7 @@ import { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createPageGuard, createPermissionGuard } from './permissionGuard';
 import routes from '~pages';
-
+import { setupLayouts } from 'virtual:generated-layouts';
 // console.log(routes);
 export const router = createRouter({
   // hash 模式
@@ -22,8 +22,9 @@ export const router = createRouter({
   //     component: () => import('../views/login/index.vue'),
   //   },
   // ],
-  //使用vite-plugin-pages插件后，路由配置改为自动导入路由
-  routes: routes,
+  // 使用vite-plugin-pages插件后，路由配置改为自动导入路由
+  // 使用vite-plugin-vue-layouts插件，路由配置改为自动导入布局(侧边栏跟导航栏布局) + 自动导入路由
+  routes: setupLayouts(routes),
   // 页面跳转滚动行为
   strict: true,
   //
