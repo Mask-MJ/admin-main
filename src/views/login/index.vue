@@ -187,8 +187,10 @@
   layout插件是默认到src/layouts/default.vue组件 ,
   如果不需要layout布局,可以在路由中排除 -> 在路由中添加meta属性添加layout属性,值为login
   这样可以让layout插件指定去找src/layouts/login.vue组件, 但是这个组件是没有的,所以不会找到,就不会有layout布局
+  noAuth: true -> 不需要登陆就可以访问
 -->
 <route lang="yaml">
 meta:
   layout: login
+  noAuth: true
 </route>
