@@ -6,7 +6,7 @@ import { setupStore } from './store';
 
 const app = createApp(App);
 
-setupRouter(app);
 setupStore(app);
+setupRouter(app);
 
 app.mount('#app');
