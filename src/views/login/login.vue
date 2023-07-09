@@ -1,16 +1,19 @@
 <script setup lang="ts">
-  // import { router } from '../../router';
+  import { router } from '@/router';
   // import { defHttp } from '@/api';
   import { getCode, login } from '@/api/modules/login';
 
+  //调用 useThemeStore 方法, 通过 themeStore 接收, 用于存储主题颜色
   const themeStore = useThemeStore();
   // console.log(themeStore.getPrimaryColor);
+  // 调用 useUserStore 方法, 通过 userStore 接收,用于存储用户信息
+  const userStore = useUserStore();
 
   // formValue 用于<n-form>双向绑定表单数据, 绑定对应的表单项,验证表单是否通过
   const formValue = ref({
-    username: '',
-    password: '',
-    code: '',
+    username: 'admin',
+    password: 'admin123',
+    code: 'wsw',
   });
   // formRef 用于获取<n-form>组件实例, 调用实例方法
   const formRef = ref();
@@ -31,14 +34,13 @@
   // function login(data: any) {
   //   return defHttp.post({ url: 'system/token/login', data });
   // }
-
   const handleClick = () => {
     // 获取<n-form>组件实例中的validate方法, 根据使用的表单和输入框的规则来验证表单是否通过
     // formRef.value中包含了组件实例中的所有方法
     // formRef.value.validate();
     // console.log(formRef.value); //组件实例中的所有方法
 
-    // 调用validate方法, 验证表单是否通过
+    // 调用validate方法,返回的是promise对象,  验证表单是否通过
     formRef.value
       .validate()
       .then(() => {
@@ -50,14 +52,23 @@
           ...formValue.value,
         };
         // console.log('验证通过', prams);
-        login(prams);
+        return login(prams);
+      })
+      // 调用login方法发送请求, 服务器返回prams对象 ，这个prams对象中有access_token 和 expires_in 两个属性, 通过res接收
+      .then((res: { access_token: string; expires_in: string }) => {
+        // console.log(res);
+        // 定义userStore仓库, 用于存储用户信息
+        // const userStore = useUserStore();
+        //通过userStore仓库中的setToken方法,将服务器返回的access_token存储到userStore仓库中原本默认值为空字符串的token属性中
+        userStore.setToken(res.access_token);
+      })
+      .then(() => {
+        router.push('/dashboard/worktable');
       })
       .catch(() => {
         // 验证表单不通过后, 执行的操作
         // console.log('验证不通过');
       });
-
-    // router.push('/home');
   };
 
   // onMounted 用于发送请求获取数据
