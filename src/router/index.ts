@@ -1,25 +1,29 @@
 import { App } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createPageGuard, createPermissionGuard } from './permissionGuard';
+import routes from '~pages';
 
+// console.log(routes);
 export const router = createRouter({
   // hash 模式
   history: createWebHashHistory(import.meta.env.VITE_PUBLIC_PATH),
   // 路由配置
-  routes: [
-    {
-      // 首页
-      path: '/dashboard/worktable',
-      name: 'worktable',
-      component: () => import('../views/dashboard/worktable/index.vue'),
-    },
-    {
-      // 登陆页
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/login/login.vue'),
-    },
-  ],
+  // routes: [
+  //   {
+  //     // 首页
+  //     path: '/dashboard/worktable',
+  //     name: 'worktable',
+  //     component: () => import('../views/dashboard/worktable/index.vue'),
+  //   },
+  //   {
+  //     // 登陆页
+  //     path: '/login',
+  //     name: 'login',
+  //     component: () => import('../views/login/index.vue'),
+  //   },
+  // ],
+  //使用vite-plugin-pages插件后，路由配置改为自动导入路由
+  routes: routes,
   // 页面跳转滚动行为
   strict: true,
   //
