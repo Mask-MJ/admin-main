@@ -9,7 +9,7 @@ export const useUserStore = defineStore('user-store', {
     // 使用vueuse的useStorage方法, 传入key和默认值, 返回一个ref响应式对象 , 用于存储token且在localStorage中存储
     // 使用useStorage函数调用, 传入TOKEN作为key, 空字符串为默认值
     // 如果localStorage中有TOKEN, 则使用localStorage中的TOKEN, 否则使用默认值
-    token: useStorage('TOKEN', ''),
+    token: useStorage('TOKEN__', ''),
   }),
   getters: {
     // 获取token
