@@ -9,7 +9,7 @@
   // 调用 useUserStore 方法, 通过 userStore 接收,用于存储用户信息
   const userStore = useUserStore();
 
-  // formValue 用于<n-form>双向绑定表单数据, 绑定对应的表单项,验证表单是否通过
+  // 定义 formValue 用于<n-form>双向绑定表单数据, 绑定对应的表单项,验证表单是否通过
   const formValue = ref({
     username: 'admin',
     password: 'admin123',

@@ -70,8 +70,14 @@ export function createPermissionGuard(router: Router) {
       //不在白名单中，需要登陆才能进入
       //判断是否有token,有token就可以进入，如果没有token就跳转到登陆页面
       if (token) {
-        next();
-        return;
+        // 如果前往的地址是 / , 就跳转到 /dashboard/worktable
+        if (to.path === '/') {
+          next('/dashboard/worktable');
+          return;
+        } else {
+          next();
+          return;
+        }
       } else {
         next('/login');
         return;
