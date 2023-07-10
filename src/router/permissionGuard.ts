@@ -71,6 +71,7 @@ export function createPermissionGuard(router: Router) {
       //判断是否有token,有token就可以进入，如果没有token就跳转到登陆页面
       if (token) {
         // 如果前往的地址是 / , 就跳转到 /dashboard/worktable
+        // 如果前往的地址不是 / , 就放行
         if (to.path === '/') {
           next('/dashboard/worktable');
           return;
