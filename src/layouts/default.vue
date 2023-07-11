@@ -3,12 +3,19 @@
   import type { LoginMenuList } from '@/api/modules/types/login.type';
   import type { MenuOption } from 'naive-ui';
   import { RouterLink } from 'vue-router';
+  import { getAppEnvConfig } from '@/utils/env';
+
+  // 是否展开侧边栏 , 默认不收缩
+  const collapsed = ref(false);
 
   // 通过封装的defHttp方法发送请求, 获取菜单数据
   // defHttp.get({ url: 'system/menu/getRouters' });
 
   // 定义menuOptions, 用于存储菜单列表数据
   const menuOptions = ref();
+
+  //  通过getAppEnvConfig方法获取环境变量中的VITE_GLOB_APP_TITLE项目名称
+  const VITE_GLOB_APP_TITLE = getAppEnvConfig().VITE_GLOB_APP_TITLE;
 
   // chargeMenuOptions 方法用于遍历服务器返回的数据
   // 使用LoginMenuList[] 类型定义
@@ -31,6 +38,9 @@
         //         { default: () => e.meta.title },
         //       ),
         key: e.id,
+        // h函数 动态渲染html图标 : 参数一 : 标签名, 参数二 : 标签属性
+        // 相当于渲染成 : <i class="i-ant-design:appstore-outlined"></i>
+        icon: () => h('i', { class: 'i-' + e.meta.icon }),
       };
       // 递归 : 调用chargeMenuOptions方法, 用于遍历children属性中的数据
       if (e.children) {
@@ -86,12 +96,20 @@
       :collapsed-width="80"
       :width="200"
       show-trigger="arrow-circle"
+      :collapsed="collapsed"
+      @collapse="collapsed = true"
+      @expand="collapsed = false"
     >
+      <div class="h-56px flex-center w-full">
+        <img class="mr-2" src="/vite.svg" alt="" />
+        <span v-if="!collapsed" class="text-16px font-700 primary">{{ VITE_GLOB_APP_TITLE }}</span>
+      </div>
       <n-menu
         class="h-screen"
         :collapsed-width="64"
         :collapsed-icon-size="22"
         :options="menuOptions"
+        :collapsed="collapsed"
       />
     </n-layout-sider>
     <n-layout>

@@ -13,6 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@iconify-json/ant-design": "^1.1.5",
     "@vueuse/core": "^10.2.0",
     "@vueuse/head": "^1.1.26",
     "axios": "^1.4.0",

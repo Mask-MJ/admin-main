@@ -2,6 +2,10 @@
   import { router } from '@/router';
   // import { defHttp } from '@/api';
   import { getCode, login } from '@/api/modules/login';
+  import { getAppEnvConfig } from '@/utils/env';
+
+  //  通过getAppEnvConfig方法获取环境变量中的VITE_GLOB_APP_TITLE项目名称
+  const VITE_GLOB_APP_TITLE = getAppEnvConfig().VITE_GLOB_APP_TITLE;
 
   //调用 useThemeStore 方法, 通过 themeStore 接收, 用于存储主题颜色
   const themeStore = useThemeStore();
@@ -89,7 +93,7 @@
       <div class="flex flex-items-center justify-between">
         <img class="w-48px h-48px" src="../../assets/vue.svg" alt="" />
         <span class="text-24px font-700" :style="{ color: themeStore.getPrimaryColor }">
-          Meijun
+          {{ VITE_GLOB_APP_TITLE }}
         </span>
       </div>
       <div>

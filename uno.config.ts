@@ -2,8 +2,8 @@ import { defineConfig } from 'unocss/vite';
 import presetUno from 'unocss/preset-uno';
 import presetIcons from 'unocss/preset-icons';
 import transformerDirectives from '@unocss/transformer-directives';
-// import { icons } from '@iconify-json/ant-design';
-// const IconNames = Object.keys(icons.icons).map((iconName) => `i-${icons.prefix}:${iconName}`);
+import { icons } from '@iconify-json/ant-design';
+const IconNames = Object.keys(icons.icons).map((iconName) => `i-${icons.prefix}:${iconName}`);
 
 export default defineConfig({
   exclude: ['node_modules', 'dist', '.git', '.husky', '.vscode', 'public', 'build', 'mock'],
@@ -18,6 +18,7 @@ export default defineConfig({
       },
     }),
   ],
+  // 自定义 unocss类名
   shortcuts: {
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
@@ -28,6 +29,7 @@ export default defineConfig({
     'fixed-center': 'fixed-lt flex-center w-full h-full',
     'transition-base': 'transition-all duration-300 ease-in-out',
   },
+  // 自定义 unocss主题色
   theme: {
     colors: {
       primary: 'rgb(var(--primary-color))',
@@ -63,5 +65,5 @@ export default defineConfig({
       dark: '#18181c',
     },
   },
-  safelist: [...'prose prose-sm m-auto text-left'.split(' ')],
+  safelist: [...'prose prose-sm m-auto text-left'.split(' '), ...IconNames],
 });
