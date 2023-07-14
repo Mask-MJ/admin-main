@@ -23,6 +23,7 @@ export default defineConfig({
     'wh-full': 'w-full h-full',
     'flex-center': 'flex justify-center items-center',
     'flex-between': 'flex justify-between items-center',
+    'flex-around': 'flex justify-around items-center',
     'flex-x-center': 'flex justify-center',
     'flex-y-center': 'flex items-center',
     'fixed-lt': 'fixed left-0 top-0',

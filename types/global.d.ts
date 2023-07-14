@@ -7,3 +7,7 @@ interface Window {
 }
 // axios 的类型定义文件
 declare type Recordable<T = any> = Record<string, T>;
+declare type TimeoutHandle = ReturnType<typeof setTimeout>;
+declare interface Fn<T = any, R = T> {
+  (...arg: T[]): R;
+}

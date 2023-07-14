@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import { createPageGuard, createPermissionGuard } from './permissionGuard';
 import routes from '~pages';
 import { setupLayouts } from 'virtual:generated-layouts';
+
 // console.log(routes);
 export const router = createRouter({
   // hash 模式
@@ -32,7 +33,6 @@ export const router = createRouter({
 });
 
 //路由守卫
-
 export const setupRouter = (app: App) => {
   app.use(router);
   // 创建页面拦截器 - 页面守卫 ----封装到createPageGuard方法中
