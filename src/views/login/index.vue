@@ -89,7 +89,7 @@
 
 <template>
   <div class="bg-gray w-screen h-screen flex flex-items-center justify-center">
-    <div class="w-300px bg-white rounded-5 px-32px py-24px">
+    <div class="w-400px bg-white rounded-5 px-32px py-24px">
       <div class="flex flex-items-center justify-between">
         <img class="w-48px h-48px" src="../../assets/vue.svg" alt="" />
         <span class="text-24px font-700" :style="{ color: themeStore.getPrimaryColor }">
@@ -163,15 +163,15 @@
         >
           登陆
         </n-button>
-        <div class="flex justify-between h-38px">
-          <n-button size="large" class="h-30px w-140px"> 手机验证码登陆</n-button>
-          <n-button size="large" class="h-30px w-140px"> 注册</n-button>
+        <div class="flex-around h-38px">
+          <n-button size="large" class="w-1/2 h-30px mr-4"> 手机验证码登陆</n-button>
+          <n-button size="large" class="w-1/2 h-30px"> 注册</n-button>
         </div>
         <n-divider> 其他账户登陆 </n-divider>
-        <div class="flex justify-between">
-          <n-button size="large" type="primary"> 超级管理员</n-button>
-          <n-button size="large" type="primary"> 管路员</n-button>
-          <n-button size="large" type="primary"> 普通用户</n-button>
+        <div class="flex-between">
+          <n-button type="primary" class="w-1/3 mr-2"> 超级管理员</n-button>
+          <n-button type="primary" class="w-1/3 mr-2"> 管路员</n-button>
+          <n-button type="primary" class="w-1/3"> 普通用户</n-button>
         </div>
       </div>
     </div>
