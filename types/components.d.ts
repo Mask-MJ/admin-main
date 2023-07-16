@@ -24,6 +24,7 @@ declare module 'vue' {
     NFormItem: typeof import('naive-ui')['NFormItem'];
     NGrid: typeof import('naive-ui')['NGrid'];
     NGridItem: typeof import('naive-ui')['NGridItem'];
+    NIcon: typeof import('naive-ui')['NIcon'];
     NInput: typeof import('naive-ui')['NInput'];
     NLayout: typeof import('naive-ui')['NLayout'];
     NLayoutContent: typeof import('naive-ui')['NLayoutContent'];
@@ -36,6 +37,8 @@ declare module 'vue' {
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
     NScrollbar: typeof import('naive-ui')['NScrollbar'];
     NSpace: typeof import('naive-ui')['NSpace'];
+    NTabPane: typeof import('naive-ui')['NTabPane'];
+    NTabs: typeof import('naive-ui')['NTabs'];
     NTimeline: typeof import('naive-ui')['NTimeline'];
     NTimelineItem: typeof import('naive-ui')['NTimelineItem'];
     NTooltip: typeof import('naive-ui')['NTooltip'];

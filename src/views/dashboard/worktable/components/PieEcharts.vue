@@ -54,7 +54,7 @@
 </script>
 
 <template>
-  <div ref="pieEchartsRef" class="w-full h-350px"></div>
+  <div ref="pieEchartsRef" class="w-full h-300px"></div>
 </template>
 
 <style scoped></style>

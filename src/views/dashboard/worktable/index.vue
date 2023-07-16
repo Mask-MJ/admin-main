@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import DataTable from './components/DataTable.vue';
   import { NButton } from 'naive-ui';
+  import DataTable from './components/DataTable.vue';
   import lineEcharts from './components/lineEcharts.vue';
   import pieEcharts from './components/PieEcharts.vue';
 </script>
@@ -10,7 +10,7 @@
     <n-grid :x-gap="16" :y-gap="16">
       <n-grid-item :span="6" class="flex-center">
         <n-card>
-          <div class="h-350px">
+          <div class="h-300px">
             <div class="title">Dashboard</div>
             <div class="desc">Overview Of Lasted Month</div>
             <div class="title">$7,754</div>
@@ -69,7 +69,6 @@
           </div>
         </n-card>
       </n-grid-item>
-
       <n-grid-item :span="8">
         <n-card>
           <span class="text-24px">timeline 时间线</span>
