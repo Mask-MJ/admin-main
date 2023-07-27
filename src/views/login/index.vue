@@ -89,7 +89,7 @@
 
 <template>
   <div class="bg-gray w-screen h-screen flex flex-items-center justify-center">
-    <div class="w-400px bg-white rounded-5 px-32px py-24px">
+    <div class="sm:w-400px w-300px bg-white rounded-5 px-32px py-24px">
       <div class="flex flex-items-center justify-between">
         <img class="w-48px h-48px" src="../../assets/vue.svg" alt="" />
         <span class="text-24px font-700" :style="{ color: themeStore.getPrimaryColor }">
@@ -183,6 +183,11 @@
     :deep(.n-input-wrapper) {
       padding-right: 1px;
       border-radius: 3px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .box {
+      width: 300px;
     }
   }
 </style>
