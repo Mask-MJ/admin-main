@@ -21,7 +21,7 @@ export default defineConfig({
     // 开启 localhost
     host: true,
     // 端口号修改
-    port: 3100,
+    port: 3333,
     // 代理
     proxy: {
       // proxy 选项:

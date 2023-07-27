@@ -17,11 +17,13 @@ declare module 'vue' {
     NCheckbox: typeof import('naive-ui')['NCheckbox'];
     NConfigProvider: typeof import('naive-ui')['NConfigProvider'];
     NDataTable: typeof import('naive-ui')['NDataTable'];
+    NDatePicker: typeof import('naive-ui')['NDatePicker'];
     NDialogProvider: typeof import('naive-ui')['NDialogProvider'];
     NDivider: typeof import('naive-ui')['NDivider'];
     NDropdown: typeof import('naive-ui')['NDropdown'];
     NForm: typeof import('naive-ui')['NForm'];
     NFormItem: typeof import('naive-ui')['NFormItem'];
+    NFormItemGi: typeof import('naive-ui')['NFormItemGi'];
     NGrid: typeof import('naive-ui')['NGrid'];
     NGridItem: typeof import('naive-ui')['NGridItem'];
     NIcon: typeof import('naive-ui')['NIcon'];
@@ -34,8 +36,12 @@ declare module 'vue' {
     NLoadingBarProvider: typeof import('naive-ui')['NLoadingBarProvider'];
     NMenu: typeof import('naive-ui')['NMenu'];
     NMessageProvider: typeof import('naive-ui')['NMessageProvider'];
+    NModal: typeof import('naive-ui')['NModal'];
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider'];
+    NRadio: typeof import('naive-ui')['NRadio'];
+    NRadioGroup: typeof import('naive-ui')['NRadioGroup'];
     NScrollbar: typeof import('naive-ui')['NScrollbar'];
+    NSelect: typeof import('naive-ui')['NSelect'];
     NSpace: typeof import('naive-ui')['NSpace'];
     NTabPane: typeof import('naive-ui')['NTabPane'];
     NTabs: typeof import('naive-ui')['NTabs'];
