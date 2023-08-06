@@ -1,13 +1,22 @@
 <script setup lang="ts">
   import { headerLists, options, userOptions } from '../data';
+  // import { router } from '@/router';
+
+  const userStore = useUserStore();
 
   // 定义layout顶部栏的icon对应的按钮事件
   const handleSelect = (_e: string) => {
     // console.log(e);
   };
   // 定义layout顶部栏的icon对应的按钮事件
-  const handleUserSelect = (_e: string) => {
+  const handleUserSelect = (e: string) => {
     // console.log(e);
+    if (e === 'logout') {
+      // 退出登录
+      userStore.setToken('');
+      // router.push('/login'); // 通过router跳转到登录页, 但是Store仓库中可能还存在一些数据,所以需要强制刷新页面
+      window.location.reload();
+    }
   };
 </script>
 
