@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import { getUserList } from '@/api/modules/user';
-  import { NButton } from 'naive-ui';
+  import { getUserList, setUserStatus } from '@/api/modules/user';
   // import { columns } from './data';
   import setModal from './modals/setModal.vue';
   import changePwd from './modals/changePwd.vue';
-  import { setRoleStatus } from '@/api/modules/user';
-  import { NSwitch, NTag, NTooltip } from 'naive-ui';
+  import { NButton, NSwitch, NTag, NTooltip } from 'naive-ui';
 
   const UserListData = ref();
   const pagination = ref({
@@ -80,8 +78,8 @@
             value: row.status,
             // 修改状态的value值
             onUpdateValue: (e) => {
-              // 通过调用setRoleStatus()修改数据库中的值
-              setRoleStatus({ status: e, userId: row.userId })
+              // 通过调用setUserStatus()修改数据库中的值
+              setUserStatus({ status: e, userId: row.userId })
                 .then(() => {
                   // console.log('修改成功');
                   window.$message.success('修改成功');
@@ -130,7 +128,7 @@
                       // console.log(row); // 添加点击事件
                       // console.log(showModal);
                       showModal.value = true;
-                      formValue.value = row;
+                      formValue.value = row; // 将当前行的数据赋值给formValue
                     },
                   },
                   // 参数3:组件插槽 --> 添加按钮图标, 通过渲染函数 渲染i标签 添加图标
@@ -151,6 +149,7 @@
                     class: 'mr-2',
                     size: 'small',
                     type: 'error',
+                    disabled: true, // 禁用按钮
                     onClick: () => {
                       // console.log(row.userId);
                       // delUser(row.userId + 'ASD');//删除这种东西不要乱动
@@ -158,7 +157,7 @@
                   },
                   { default: () => h('i', { class: 'i-ant-design:delete-outlined' }) },
                 ),
-              default: () => '删除',
+              default: () => '不要点删除',
             },
           ),
           h(

@@ -1,11 +1,11 @@
 import { defHttp } from '@/api';
-import type { RoleStatus } from './types/user.type';
+import type { UserStatus } from './types/user.type';
 // 获取用户列表
 export function getUserList(params?: any) {
   return defHttp.get({ url: 'system/user/list', params });
 }
 // 修改用户状态
-export function setRoleStatus(params: RoleStatus) {
+export function setUserStatus(params: UserStatus) {
   return defHttp.put({ url: 'system/user/changeStatus', params });
 }
 // 新增用户

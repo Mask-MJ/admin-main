@@ -132,7 +132,7 @@
         </n-radio-group>
       </n-form-item>
 
-      <n-form-item label="状态 :" path="sex">
+      <n-form-item label="状态 :" path="status">
         <n-radio-group v-model:value="formValue.status" name="status">
           <n-space>
             <n-radio value="0"> 正常 </n-radio>

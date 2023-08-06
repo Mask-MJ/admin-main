@@ -1,4 +1,4 @@
-import { setRoleStatus } from '@/api/modules/user';
+import { setUserStatus } from '@/api/modules/user';
 import { NSwitch, NTag, NButton, NTooltip } from 'naive-ui';
 
 export const columns = [
@@ -47,7 +47,7 @@ export const columns = [
           // 修改状态的value值
           onUpdateValue: (e) => {
             // 通过调用setRoleStatus()修改数据库中的值
-            setRoleStatus({ status: e, userId: row.userId })
+            setUserStatus({ status: e, userId: row.userId })
               .then(() => {
                 // console.log('修改成功');
                 window.$message.success('修改成功');
